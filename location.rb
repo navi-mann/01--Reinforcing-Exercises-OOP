@@ -1,5 +1,8 @@
 require 'pry'
 class Location
+
+  attr_reader :name
+
   def initialize(name)
     @name = name
   end
@@ -14,20 +17,14 @@ class Trip
     @@destinations = @@destinations
   end
 
-    def self.get_the_name
-      @@destinations.each do |key,value|
-        puts value
-      end
-    end
-
   def self.add(trip)
     @@destinations << trip
   end
 
   def self.schedule
     puts "Begin Trip."
-    @@destinations.each_cons(2) do |value|
-      puts "Travelled from #{value[0]} to #{value[1]}"
+    @@destinations.each_cons(2) do |two_locations|
+      puts "Travelled from #{two_locations[0].name} #{two_locations[1].name}"
     end
     puts "Ended Trip."
 
